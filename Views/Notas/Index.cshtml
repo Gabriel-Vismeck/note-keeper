@@ -1,0 +1,26 @@
+﻿@model IEnumerable<gerenciador_de_notas.Models.Nota>
+
+@{
+    ViewData["Title"] = "Note Keeper";
+}
+<link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+
+<h1 class="text-center">Note Keeper</h1>
+
+<div class="content">
+    <p>
+        <a class="botao btn btn-primary" role="button" asp-action="Create">Criar nova nota</a>
+    </p>
+    @foreach (var item in Model)
+    {
+        <div class="nota">
+            <h3 class="text-center">@Html.DisplayFor(modelItem => item.Titulo)</h3>
+            <p class="text-center" style="white-space: pre-line;">@Html.DisplayFor(modelItem => item.Conteudo)</p>
+            <div class="nota-links">
+                <a class="nota-link" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                <a class="nota-link" asp-action="Delete" asp-route-id="@item.Id">Deletar</a>
+            </div>
+        </div>
+    }
+</div>
+

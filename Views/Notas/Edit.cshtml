@@ -1,0 +1,41 @@
+﻿@model gerenciador_de_notas.Models.Nota
+
+@{
+    ViewData["Title"] = "Editar nota";
+}
+
+<link rel="stylesheet" href="~/css/create.css" asp-append-version="true" />
+
+<h1>Editar nota</h1>
+<div class="container">
+<div class="content text-center">
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Titulo" class="control-label"></label>
+                <input asp-for="Titulo" class="form-control" autocomplete="off" data-val-required="O título é obrigatório!" />
+                <span asp-validation-for="Titulo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Conteudo" class="control-label"></label>
+                <textarea asp-for="Conteudo" class="form-control" autocomplete="off" data-val-required="O conteúdo é obrigatório!"></textarea>
+                <span asp-validation-for="Conteudo" class="text-danger"></span>
+            </div>
+            <div class="botoes form-group">
+                <input type="submit" value="Salvar" class="botao btn btn-primary" />
+                <a asp-action="Index">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+<div>
+    
+</div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
